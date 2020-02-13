@@ -5,7 +5,10 @@ const SearchScreen = ({navigation}) => {
   return (
     <View>
       <Text>Hello Profile, it's!!!</Text>
-      <Button title="Go to home" onPress={() => navigation.navigate('Home')} />
+      <Button
+        title="Go to detail"
+        onPress={() => navigation.navigate('Detail')}
+      />
     </View>
   );
 };
