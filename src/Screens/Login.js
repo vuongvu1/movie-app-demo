@@ -1,20 +1,30 @@
-import React, {useState} from 'react';
-// import {API_KEY} from 'react-native-dotenv';
+import React, {useState, useEffect} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {AccessToken} from 'react-native-fbsdk';
 
 import FBLoginButton from '../components/FBLoginButton';
 
 const LoginScreen = ({navigation}) => {
   const [userId, setUserId] = useState('');
 
+  useEffect(() => {
+    AccessToken.getCurrentAccessToken().then(data =>
+      data ? setUserId(data.userID) : null,
+    );
+  }, []);
+
   const handleLoggedIn = data => setUserId(data.userID);
+  const handleLoggedOut = data => setUserId('');
 
   return (
     <View style={styles.container}>
       <Text style={styles.label}>
         {userId ? `User ID: ${userId}` : 'Please login'}
       </Text>
-      <FBLoginButton onLoginFinished={handleLoggedIn} />
+      <FBLoginButton
+        onLoginFinished={handleLoggedIn}
+        onLogoutFinished={handleLoggedOut}
+      />
     </View>
   );
 };
