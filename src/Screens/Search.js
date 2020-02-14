@@ -25,13 +25,19 @@ const SearchScreen = ({navigation}) => {
     [],
   );
 
+  const goToDetail = id => {
+    navigation.navigate('Detail', {id});
+  };
+
   return (
     <View style={styles.container}>
       <SearchBar text={searchText} setText={setSearchText} />
 
       <FlatList
         data={movies}
-        renderItem={({item}) => <MovieItem data={item} />}
+        renderItem={({item}) => (
+          <MovieItem data={item} onPressItem={() => goToDetail(item.id)} />
+        )}
         keyExtractor={item => `${item.id}`}
       />
     </View>

@@ -31,3 +31,6 @@ export const searchMovie = query =>
   baseFetch(
     `${BASE_API}/search/movie?api_key=${API_KEY}&query=${query}&page=1`,
   );
+
+export const fetchMovie = id =>
+  baseFetch(`${BASE_API}/movie/${id}?api_key=${API_KEY}&language=en-US`);

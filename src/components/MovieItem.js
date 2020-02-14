@@ -1,11 +1,14 @@
 import React from 'react';
-import {View, Image, Text, StyleSheet} from 'react-native';
+import {View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
 import {imageSizes} from '../constants';
 import {getImageUrl} from '../utils';
 
-const MovieItem = ({data: {title, poster_path, release_date, overview}}) => (
-  <View style={styles.container}>
+const MovieItem = ({
+  data: {id, title, poster_path, release_date, overview},
+  onPressItem,
+}) => (
+  <TouchableOpacity style={styles.container} onPress={onPressItem}>
     <Image
       style={styles.logo}
       source={{
@@ -22,7 +25,7 @@ const MovieItem = ({data: {title, poster_path, release_date, overview}}) => (
       </Text>
       <Text style={styles.publishDate}>Published: {release_date}</Text>
     </View>
-  </View>
+  </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({

@@ -19,11 +19,27 @@ const HomeScreen = ({navigation}) => {
     fetchUpcoming().then(data => setUpcoming(data.results));
   }, []);
 
+  const goToDetail = id => {
+    navigation.navigate('Detail', {id});
+  };
+
   return (
     <ScrollView>
-      <MovieList title="Top Rated Movies" movies={topRated} />
-      <MovieList title="Popular Movies" movies={topPopular} />
-      <MovieList title="Upcoming Movies" movies={upcoming} />
+      <MovieList
+        title="Top Rated Movies"
+        movies={topRated}
+        onPressItem={goToDetail}
+      />
+      <MovieList
+        title="Popular Movies"
+        movies={topPopular}
+        onPressItem={goToDetail}
+      />
+      <MovieList
+        title="Upcoming Movies"
+        movies={upcoming}
+        onPressItem={goToDetail}
+      />
     </ScrollView>
   );
 };

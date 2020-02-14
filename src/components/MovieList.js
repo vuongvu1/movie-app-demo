@@ -1,23 +1,32 @@
 import React, {useCallback} from 'react';
-import {View, Text, Image, StyleSheet, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  FlatList,
+  TouchableOpacity,
+} from 'react-native';
 
 import {imageSizes} from '../constants';
 import {getImageUrl} from '../utils';
 
-const MovieList = ({title, movies}) => {
+const MovieList = ({title, movies, onPressItem}) => {
   const renderImage = useCallback(
     ({item}) => (
-      <Image
-        style={styles.logo}
-        source={{
-          uri: getImageUrl({
-            fileName: item.poster_path,
-            size: imageSizes.LOGO,
-          }),
-        }}
-      />
+      <TouchableOpacity onPress={() => onPressItem(item.id)}>
+        <Image
+          style={styles.logo}
+          source={{
+            uri: getImageUrl({
+              fileName: item.poster_path,
+              size: imageSizes.LOGO,
+            }),
+          }}
+        />
+      </TouchableOpacity>
     ),
-    [],
+    [onPressItem],
   );
 
   return (
@@ -40,6 +49,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'flex-start',
     marginTop: 20,
+    height: 180,
   },
   label: {
     fontSize: 16,
