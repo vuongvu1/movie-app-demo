@@ -1,16 +1,22 @@
-import React from 'react';
-import {Text, View, Button} from 'react-native';
+import React, {useState} from 'react';
+import {View, StyleSheet} from 'react-native';
+
+import SearchBar from '../components/SearchBar';
 
 const SearchScreen = ({navigation}) => {
+  const [searchText, setSearchText] = useState('');
+
   return (
-    <View>
-      <Text>Hello Profile, it's!!!</Text>
-      <Button
-        title="Go to detail"
-        onPress={() => navigation.navigate('Detail')}
-      />
+    <View style={styles.container}>
+      <SearchBar text={searchText} setText={setSearchText} />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+  },
+});
 
 export default SearchScreen;
