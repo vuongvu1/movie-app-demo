@@ -8,7 +8,6 @@ const MovieList = ({title, movies}) => {
   const renderImage = useCallback(
     ({item}) => (
       <Image
-        key={item.id}
         style={styles.logo}
         source={{
           uri: getImageUrl({
@@ -28,7 +27,7 @@ const MovieList = ({title, movies}) => {
         <FlatList
           data={movies}
           renderItem={renderImage}
-          keyExtractor={item => item.id}
+          keyExtractor={item => `${item.id}`}
           horizontal
         />
       </View>
