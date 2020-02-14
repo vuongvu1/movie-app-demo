@@ -13,7 +13,10 @@ const LoginScreen = ({navigation}) => {
     );
   }, []);
 
-  const handleLoggedIn = data => setUserId(data.userID);
+  const handleLoggedIn = data => {
+    setUserId(data.userID);
+    navigation.navigate('Home');
+  };
   const handleLoggedOut = data => setUserId('');
 
   return (
