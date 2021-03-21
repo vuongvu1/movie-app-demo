@@ -1,7 +1,7 @@
 # movie-app-demo
 
-To start, add a .env file
+Movie demo app using React Native
 
-## Demo video
+## Demo
 
-https://drive.google.com/file/d/1ODfWmzABELAyjcGvq_X8bYsGMlLV7LDs/view?usp=sharing
+![Demo](./demo.gif)
